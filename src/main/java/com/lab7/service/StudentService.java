@@ -6,6 +6,7 @@ import com.lab7.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class StudentService {
@@ -21,15 +22,16 @@ public class StudentService {
     }
 
     public Student getStudentById(Long id) {
-        return repository.findById(id)
+        return repository.findById(Objects.requireNonNull(id))
                 .orElseThrow(() -> new StudentNotFoundException(id));
     }
 
     public Student saveStudent(Student student) {
-        return repository.save(student);
+        return repository.save(Objects.requireNonNull(student));
     }
 
     public Student updateStudent(Long id, Student updatedStudent) {
+        Objects.requireNonNull(updatedStudent);
         Student student = getStudentById(id);
         student.setName(updatedStudent.getName());
         student.setAge(updatedStudent.getAge());
@@ -37,6 +39,6 @@ public class StudentService {
     }
 
     public void deleteStudent(Long id) {
-        repository.deleteById(id);
+        repository.deleteById(Objects.requireNonNull(id));
     }
 }

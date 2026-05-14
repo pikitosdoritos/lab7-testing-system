@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("null")
 @DataJpaTest
 public class StudentRepositoryTest {
 
@@ -29,7 +31,8 @@ public class StudentRepositoryTest {
         Student saved = repository.save(new Student("Alice", 20));
 
         assertNotNull(saved.getId());
-        Optional<Student> found = repository.findById(saved.getId());
+        Long savedId = Objects.requireNonNull(saved.getId());
+        Optional<Student> found = repository.findById(savedId);
         assertTrue(found.isPresent());
         assertEquals("Alice", found.get().getName());
         assertEquals(20, found.get().getAge());
@@ -47,7 +50,7 @@ public class StudentRepositoryTest {
     @Test
     void testDeleteById() {
         Student saved = repository.save(new Student("Alice", 20));
-        Long id = saved.getId();
+        Long id = Objects.requireNonNull(saved.getId());
 
         repository.deleteById(id);
 

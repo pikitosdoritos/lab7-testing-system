@@ -32,10 +32,8 @@
         <div class="d-flex gap-2 mt-4">
             <a href="/students-view/${student.id}/edit" class="btn btn-primary px-4">Edit</a>
             <a href="/students-view" class="btn btn-outline-secondary px-4">Back</a>
-            <form action="/students-view/${student.id}/delete" method="post" class="ms-auto">
-                <button type="submit" class="btn btn-outline-danger"
-                        onclick="return confirm('Delete this student?')">Delete</button>
-            </form>
+            <a href="/students-view/${student.id}/delete" class="btn btn-outline-danger ms-auto"
+               onclick="return confirm('Delete this student?')">Delete</a>
         </div>
     </div>
 </div>

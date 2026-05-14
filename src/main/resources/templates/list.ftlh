@@ -43,8 +43,7 @@
                         <td class="align-middle text-end">
                             <a href="/students-view/${s.id}" class="btn btn-sm btn-outline-secondary me-1">View</a>
                             <a href="/students-view/${s.id}/edit" class="btn btn-sm btn-outline-primary me-1">Edit</a>
-                            <a href="/students-view/${s.id}/delete" class="btn btn-sm btn-outline-danger"
-                               onclick="return confirm('Delete student ${s.name}?')">Delete</a>
+                            <a href="/students-view/${s.id}/delete" class="btn btn-sm btn-outline-danger">Delete</a>
                         </td>
                     </tr>
                     </#list>

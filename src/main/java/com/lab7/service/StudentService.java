@@ -1,5 +1,6 @@
 package com.lab7.service;
 
+import com.lab7.exception.StudentNotFoundException;
 import com.lab7.model.Student;
 import com.lab7.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -20,25 +21,18 @@ public class StudentService {
     }
 
     public Student getStudentById(Long id) {
-
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException(
-                        "Student not found"));
+                .orElseThrow(() -> new StudentNotFoundException(id));
     }
 
     public Student saveStudent(Student student) {
         return repository.save(student);
     }
 
-    public Student updateStudent(
-            Long id,
-            Student updatedStudent) {
-
+    public Student updateStudent(Long id, Student updatedStudent) {
         Student student = getStudentById(id);
-
         student.setName(updatedStudent.getName());
         student.setAge(updatedStudent.getAge());
-
         return repository.save(student);
     }
 

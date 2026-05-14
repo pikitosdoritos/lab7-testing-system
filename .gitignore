@@ -31,3 +31,18 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Extracted archives (reference materials) ###
+_extracted/
+
+### OS files ###
+.DS_Store
+Thumbs.db
+
+### Environment / secrets ###
+*.env
+.env
+
+### Log files ###
+*.log
+logs/
